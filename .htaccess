@@ -1,0 +1,15 @@
+RewriteEngine On
+
+# Chuyển Hướng HTTPS
+RewriteCond %{HTTPS} off
+
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+
+RewriteCond %{REQUEST_URI} !^/public/#
+
+RewriteCond %{REQUEST_URI} !(.*)/public/$
+
+# /battap/Project/public/ Thay Đổi Bằng URL Forder
+RewriteRule ^(.*)$ /battap/Project/public/$1 [L,R=301] 
